@@ -1,26 +1,51 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div id="app">
+           <todo-app></todo-app>
+           <section class="product">
+
+           </section>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Product from '/components/Product.vue'
+import TodoApp from './components/TodoApp.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TodoApp,
+    Product
+  },
+  data(){
+    return {
+      products:[
+        {
+        title:'Nike Air Max',
+        color:'green',
+        bgtext:'Nike',
+        sre: require('./assets/products/shoe1.jpg')
+        },
+        {
+        title:'Nike Flex',
+        color:'Blue',
+        bgtext:'Air',
+        sre: require('./assets/products/shoe2.jpg')
+        },
+        {
+        title:'Nike Roche Runs',
+        color:'Pink',
+        bgtext:'MAX',
+        sre: require('./assets/products/shoe3.jpg')
+        }
+      ]
+    }
   }
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
+
+
