@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-md-4">
      <h2 class="text-center mt-5">List</h2>
       <!--Input-->
       <div class="d-flex">
@@ -41,7 +39,7 @@
     </tr>
   </tbody>
 </table>
-</div></div>
+
   </div>
 </template>
 
