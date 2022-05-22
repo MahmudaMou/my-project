@@ -1,12 +1,13 @@
 <template>
+<!-- <div class="container"> -->
 <div class="product container">
-  
+            
        <div :class="'product-inner ' + product.color ">
          <div class="product-text-wrap">
            <h2 class="bg-text">{{product.bgtext}}</h2>
          </div>
          <div class="product-image-wrap">
-           <img :src="product.sre" class="image" style="height:140px;width:170px;">
+           <img :src="product.image" class="image" style="height:140px;width:170px;">
          </div>
          <div class="product-detail">
            <h2>{{product.title}}</h2>
@@ -24,9 +25,12 @@ export default{
 </script>
 <style>
 .product{
+  display: flex;
   flex: 1 1 3.33% ;
-  /* width: 100%; */
+  width: 50px;
   padding: 25px;
+  flex-wrap: wrap;
+    
 
 }
 .product-inner{

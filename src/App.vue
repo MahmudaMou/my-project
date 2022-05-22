@@ -2,7 +2,7 @@
 <div id="app" class="container">
    <div class="row">
             
-           <div class="col-md-8 product">
+           <div class="product">
              
       <ProductPage
       v-for="product in products"
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 import TodoApp from './components/TodoApp.vue'
 import ProductPage from './components/ProductPage.vue'
@@ -35,46 +36,19 @@ export default {
   },
   data(){
     return {
-      products:[
-        {
-        title:'Nike Air Max',
-        color:'green',
-        bgtext:'Nike',
-        detail:'Use a computed to rearrange the items array into an object whose keys are the category names. The corresponding value for each key will be an array of the items for that category.',
-        sre: require('./assets/products/shoe1.jpg')
-        },
-        {
-        title:'Nike Flex',
-        color:'blue',
-        bgtext:'Air',
-        detail:'Use a computed to rearrange the items array into an object whose keys are the category names. The corresponding value for each key will be an array of the items for that category.',
-        sre: require('./assets/products/shoe2.jpg')
-        },
-        {
-        title:'Nike Roche Runs',
-        color:'pink',
-        bgtext:'MAX',
-        detail:'Use a computed to rearrange the items array into an object whose keys are the category names. The corresponding value for each key will be an array of the items for that category.',
-        sre: require('./assets/products/shoe3.jpg')
-        },
-        {
-        title:'Nike Flex',
-        color:'blue',
-        bgtext:'Air',
-        detail:'Use a computed to rearrange the items array into an object whose keys are the category names. The corresponding value for each key will be an array of the items for that category.',
-        sre: require('./assets/products/shoe2.jpg')
-        },
-        {
-        title:'Nike Flex',
-        color:'blue',
-        bgtext:'Air',
-        detail:'Use a computed to rearrange the items array into an object whose keys are the category names. The corresponding value for each key will be an array of the items for that category.',
-        sre: require('./assets/products/shoe2.jpg')
-        },
-
-        
-      ]
+      products:[]
     }
+  },
+  created(){
+    this.itemContent()
+  },
+  methods:{
+    async itemContent() {
+      const response = await this.$http.get("http://127.0.0.1:8000/api/items");
+      
+      this.products = response.data;
+    },
+      
   }
 }
 </script>
@@ -89,21 +63,23 @@ export default {
      font-family: 'montseratt', sans-serif;
    }
    main{
-     /* width:100vw; */
+     width:100vw;
      min-height: 100vh;
      overflow: hidden;
      background-color: aqua;
-     display: flex;
+     /* display: flex; */
    
    }
    .product{
-     display: flex;
+   
      /* max-width: 1280px; */
-     width: 100px;
+     /* width: 100px; */
   
      padding: 25px;
      margin: 0 auto;
-    flex-wrap: wrap;
+
+     
+  
    }
    
 </style>
