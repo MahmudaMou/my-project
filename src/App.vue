@@ -1,7 +1,7 @@
 <template>
 <div id="app" class="container">
    <div class="row">
-            
+             
            <div class="product">
              
       <ProductPage
@@ -26,6 +26,7 @@ import TodoApp from './components/TodoApp.vue'
 import ProductPage from './components/ProductPage.vue'
 
 
+
 export default {
   name: 'App',
   components: {
@@ -36,20 +37,16 @@ export default {
   },
   data(){
     return {
-      products:[]
+      products:[],
+      info: null
     }
   },
   created(){
-    this.itemContent()
-  },
-  methods:{
-    async itemContent() {
-      const response = await this.$http.get("http://127.0.0.1:8000/api/items");
-      
-      this.products = response.data;
-    },
-      
+            axios.get(`http://127.0.0.1:8000/api/items`)
+       .then(res => console.log(res))
+       .catch(error => console.log(error))
   }
+      
 }
 </script>
 <style>
