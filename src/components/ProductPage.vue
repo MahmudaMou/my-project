@@ -1,5 +1,6 @@
 <template>
 <!-- <div class="container"> -->
+  
 <div class="product container">
             
        <div :class="'product-inner ' + product.color ">
@@ -37,6 +38,10 @@ export default{
   position: relative;
   padding: 25px;
   box-shadow: 0px 0px 16px rgba(0, 0, 0,0.25);
+
+}
+.product-inner.red{
+    background-image: linear-gradient(to bottom right, #cd534b,#d34127);
 
 }
 .product-inner.green{

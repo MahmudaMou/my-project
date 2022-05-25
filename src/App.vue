@@ -1,9 +1,13 @@
 <template>
+<div>
+  <HeaderPart/>
+</div>
 <div id="app" class="container">
+ 
    <div class="row">
-             
+               <h2 class="text-center" style="margin-top:20px; margin-left:-200px">Tasks To Do</h2>
            <div class="product">
-             
+            
       <ProductPage
       v-for="product in products"
       :key="product.color"
@@ -21,9 +25,10 @@
 
 <script>
 import axios from 'axios';
-
+ 
 import TodoApp from './components/TodoApp.vue'
 import ProductPage from './components/ProductPage.vue'
+import HeaderPart from './components/HeaderPart.vue'
 
 
 
@@ -31,19 +36,25 @@ export default {
   name: 'App',
   components: {
     ProductPage,
-    TodoApp
-   
-    
-  },
+    HeaderPart,
+    TodoApp,
+
+},
   data(){
     return {
       products:[],
-      info: null
+      info: []
     }
   },
+
+  
   created(){
-            axios.get(`http://127.0.0.1:8000/api/items`)
-       .then(res => console.log(res))
+              
+        axios.get(`http://127.0.0.1:8000/api/items`)
+       .then(res => {
+                   this.products = res.data.data;
+                  //  this.info = products.title
+                   })
        .catch(error => console.log(error))
   }
       
@@ -60,6 +71,7 @@ export default {
      font-family: 'montseratt', sans-serif;
    }
    main{
+     margin-top: 10px;
      width:100vw;
      min-height: 100vh;
      overflow: hidden;
